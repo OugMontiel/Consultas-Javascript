@@ -1,2 +1,3 @@
-import prompt from 'async-prompt'
-// import *** from './modulos/ej.js'
+import { getAllOficceAndCodeCity } from "./modulos/offices.js";
+
+console.log(await getAllOficceAndCodeCity())
