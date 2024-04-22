@@ -5,14 +5,22 @@
     "main": "js/main.js",
     "type": "module",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "dev": "node js/main.js"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "node --watch js/main.js",
+        "clients": "json-server js/db/clients.json -p 5101",
+        "employee":"json-server js/db/employee.json -p 5103",
+        "gama":"json-server js/db/gama.json -p 5102",
+        "offices":"json-server js/db/offices.json -p 5104",
+        "pago":"json-server js/db/pago.json -p 5105",
+        "payments":"json-server js/db/payments.json -p 5106",
+        "product":"json-server js/db/product.json -p 5107",
+        "request_details":"json-server js/db/request_details.json -p 5108"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-      "async-prompt": "^1.0.1"
+        "async-prompt": "^1.0.1",
+        "json-server": "^1.0.0-alpha.23"
     }
-  }
-  
+}
