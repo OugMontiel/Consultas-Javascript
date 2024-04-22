@@ -1,3 +1,3 @@
-import { getAllOficceAndCodeCity } from "./modulos/offices.js";
+import { getAllOficceAndCodeCity, getAllOfficceCityAndMovil } from "./modulos/offices.js";
 
-console.log(await getAllOficceAndCodeCity())
+console.log(await getAllOfficceCityAndMovil())

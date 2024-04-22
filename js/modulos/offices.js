@@ -10,3 +10,15 @@ export const getAllOficceAndCodeCity = async()=>{
     })
     return dataUpdate; 
 }
+// 2. Devuelve un listado con la ciudad y el teléfono de las oficinas de España.
+export const getAllOfficceCityAndMovil = async()=>{
+    let res = await fetch("http://localhost:5104/offices?country=España")
+    let data = await res.json();
+    let dataUpdate = data.map (val=>{
+        return{
+            city: val.city,
+            movil: val.movil
+        }
+    })
+    return dataUpdate
+}
