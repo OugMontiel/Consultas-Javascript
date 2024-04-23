@@ -11,3 +11,7 @@ export const getAllFullNameAndEmails=async()=>{
     })
     return dataUpdate
 }
+
+// 4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
+
+export const GetBossFullNameAndEmail = async()=>{}
