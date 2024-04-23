@@ -14,7 +14,7 @@ export const getAllFullNameAndEmails=async()=>{
 
 // 4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
 
-export const GetBossFullNameAndEmail = async()=>{
+export const getBossFullNameAndEmail = async()=>{
     let res = await fetch("http://localhost:5103/employee?")
     let data = await res.json();
     // Encuentra al jefe (quien tiene code_boss === null)
@@ -28,4 +28,19 @@ export const GetBossFullNameAndEmail = async()=>{
         }
     })
     return dataUpdate;
+}
+
+// 5. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
+
+export const getRepresentantesVentas = async()=>{
+    let res = await fetch("http://localhost:5103/employee?position_ne=Representante Ventas")
+    let data = await res.json();
+    let dataUpdate =data.map(val=>{
+        return{
+            Name:val.name,
+            lastName: `${val.lastname1} ${val.lastname2}`,
+            puesto:val.position,
+        }
+    })
+    return dataUpdate
 }
