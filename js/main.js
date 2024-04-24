@@ -12,10 +12,11 @@ import {
 } from "./modulos/payments.js";
 import { 
     getAllClientsMadridCodeIs30And11, 
-    getAllClientsEspanoles
+    getAllClientsEspanoles,
+    getListClientsPayIn2008
 } from "./modulos/clients.js";
 import {
     getListStatusRequests
 } from "./modulos/requests.js"
 
-console.log(await getListStatusRequests()) 
+console.log(await getListClientsPayIn2008()) 
