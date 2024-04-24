@@ -9,29 +9,33 @@ export const getListStatusRequests=async()=>{
 
 // 9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
 
-export const getAllCodeRequesCodeClientsDataRequestsDataWait =async()=>{
-    let res = await fetch("http://localhost:5109/requests?status=Entregado")
-    let data = await res.json();
-    let dataUpdate=data.filter(dev=>{
-        let waitDate= new Date(dev.date_Wait);
-        let deliveryDate= new Date(dev.date_delivery);
-        // Convertir las fechas a timestamps (milisegundos)
-        const timestampInicio = waitDate.getTime();
-        const timestampFin = deliveryDate.getTime();
-        // Calcular la diferencia en milisegundos
-        const diferenciaMilisegundos = timestampFin - timestampInicio;
-        // Convertir la diferencia de milisegundos a días (86400000 milisegundos por día)
-        const diferenciaDias = diferenciaMilisegundos / (1000 * 60 * 60 * 24);
-        if (diferenciaDias>=1){
-            return{
-                Request: dev.code_request,
-                CodeClient: dev.code_client,
-                ExpectedDate: dev.date_wait,
-                DeliveryDate: dev.date_delivery
-            }
-        }
-    })
-    return dataUpdate
-}
+export const getAllCodeRequesCodeClientsDataRequestsDataWait = async () => {
+    try {
+        const res = await fetch("http://localhost:5109/requests");
+        const data = await res.json();
 
+        const delayedOrders = data.filter(order => {
+            // Convierte las fechas a objetos Date para comparación
+            const expectedDate = new Date(order.date_wait);
+            const deliveryDate = new Date(order.date_delivery);
+
+            // Compara las fechas para determinar si el pedido está retrasado
+            return expectedDate > deliveryDate; // Si la fecha esperada es posterior a la fecha de entrega, el pedido está retrasado
+        });
+
+        // Mapea los resultados en el formato deseado
+        const formattedDelayedOrders = delayedOrders.map(order => ({
+            code_request: order.code_request,
+            code_client: order.code_client,
+            date_wait: order.date_wait,
+            date_delivery: order.date_delivery
+        }));
+
+        return formattedDelayedOrders;
+    } catch (error) {
+        console.error("Error al obtener pedidos retrasados:", error);
+        return [];
+    }
+};
+    
 
