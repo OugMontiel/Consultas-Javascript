@@ -15,21 +15,21 @@ export const getAllCodeRequesCodeClientsDataRequestsDataWait =async()=>{
     let dataUpdate=data.filter(dev=>{
         let waitDate= new Date(dev.date_Wait);
         let deliveryDate= new Date(dev.date_delivery);
-        return waitDate >= deliveryDate
-    }).map(dev=>{
-        if(dev.waitDate.getFullYear()>=dev.deliveryDate.getFullYear()){
-            if (dev.waitDate.getMonth() + 1>=dev.deliveryDate.getMonth() + 1){
-                if (dev.waitDate.getDate()>=dev.deliveryDate.getDate()){
-                    return{
-                        code: dev.code_request,
-                        CodeClient: dev.code_client,
-                        ExpectedDate: dev.date_wait,
-                        DeliveryDate: dev.date_delivery
-                    }
-                }
+        // Convertir las fechas a timestamps (milisegundos)
+        const timestampInicio = waitDate.getTime();
+        const timestampFin = deliveryDate.getTime();
+        // Calcular la diferencia en milisegundos
+        const diferenciaMilisegundos = timestampFin - timestampInicio;
+        // Convertir la diferencia de milisegundos a días (86400000 milisegundos por día)
+        const diferenciaDias = diferenciaMilisegundos / (1000 * 60 * 60 * 24);
+        if (diferenciaDias>=1){
+            return{
+                Request: dev.code_request,
+                CodeClient: dev.code_client,
+                ExpectedDate: dev.date_wait,
+                DeliveryDate: dev.date_delivery
             }
         }
-    
     })
     return dataUpdate
 }
