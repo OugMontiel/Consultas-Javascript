@@ -14,5 +14,8 @@ import {
     getAllClientsMadridCodeIs30And11, 
     getAllClientsEspanoles
 } from "./modulos/clients.js";
+import {
+    getListStatusRequests
+} from "./modulos/requests.js"
 
-console.log(await getAllClientsEspanoles()) 
+console.log(await getListStatusRequests()) 
