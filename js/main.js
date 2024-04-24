@@ -17,7 +17,8 @@ import {
 } from "./modulos/clients.js";
 import {
     getListStatusRequests,
-    getAllCodeRequesCodeClientsDataRequestsDataWait
+    getAllCodeRequesCodeClientsDataRequestsDataWait,
+    getDelayedDeliveries
 } from "./modulos/requests.js"
 
-console.log(await getAllCodeRequesCodeClientsDataRequestsDataWait()) 
+console.log(await getDelayedDeliveries()) 

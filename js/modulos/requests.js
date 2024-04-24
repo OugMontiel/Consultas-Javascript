@@ -37,5 +37,42 @@ export const getAllCodeRequesCodeClientsDataRequestsDataWait = async () => {
         return [];
     }
 };
+
+// Función para obtener la lista de pedidos que cumplen con la condición
+export const getDelayedDeliveries = async () => {
+    // Hacer la solicitud HTTP para obtener los datos de los pedidos
+    let res = await fetch("http://localhost:5109/requests");
+    let data = await res.json();
+
+    // Filtrar los pedidos que cumplen con la condición
+    let delayedOrders = data.filter(order => {
+        // Convertir las fechas de entrega y esperada en objetos Date
+        const deliveryDate = new Date(order.date_delivery);
+        const expectedDate = new Date(order.date_wait);
+
+        // Calcular la diferencia en milisegundos entre las fechas
+        const timeDifference = expectedDate.getTime() - deliveryDate.getTime();
+
+        // Convertir la diferencia a días
+        const daysDifference = timeDifference / (1000 * 3600 * 24);
+
+        // Retornar true si la fecha de entrega fue al menos dos días antes de la fecha esperada
+        return daysDifference >= 2;
+    });
+
+    // Mapear los datos de los pedidos filtrados en el formato deseado
+    let formattedOrders = delayedOrders.map(order => {
+        return {
+            code_request: order.code_request,
+            code_client: order.code_client,
+            date_expected: order.date_wait,
+            date_delivery: order.date_delivery
+        };
+    });
+
+    // Retornar la lista de pedidos filtrados y formateados
+    return formattedOrders;
+};
+
     
 
