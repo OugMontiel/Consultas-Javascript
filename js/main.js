@@ -16,7 +16,8 @@ import {
     getListClientsPayIn2008
 } from "./modulos/clients.js";
 import {
-    getListStatusRequests
+    getListStatusRequests,
+    getAllCodeRequesCodeClientsDataRequestsDataWait
 } from "./modulos/requests.js"
 
-console.log(await getListClientsPayIn2008()) 
+console.log(await getAllCodeRequesCodeClientsDataRequestsDataWait()) 
