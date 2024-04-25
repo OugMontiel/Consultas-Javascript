@@ -30,3 +30,15 @@ export const getAllPayIn2008WhitPaypal=async()=>{
     });
     return dataUpdate
 }
+
+// 14. Devuelve un listado con todas las formas de pago que aparecen en la tabla `pago`. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+
+export const getAllPayForm =async()=>{
+    let res =await fetch("http://localhost:5106/payments")
+    let data = await res.json();
+    let dataUpdate = new Set(data.map(dev=>dev.payment));
+    dataUpdate=[...dataUpdate]
+    return {
+        FormasDePago: dataUpdate
+    }
+}
