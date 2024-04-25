@@ -89,5 +89,23 @@ export const getAllRequestStatusRechazadosIn2009 = async () => {
     return dataUpdate
 };
 
+// 12. Devuelve un listado de todos los pedidos que han sido **entregados** en el mes de enero de cualquier año.
+
+export const getAllRequestStatusEntregadosOnMayoIn2009 = async () => {
+    // Hacer la solicitud HTTP para obtener los datos de los pedidos
+    let res = await fetch("http://localhost:5109/requests?status=Entregado");
+    let data = await res.json();
+    let dataUpdate = data.filter(dev=>{
+        const yearDataUpdata = new Date(dev.date_delivery);
+        // Logs para depuración
+        console.log("Fecha de solicitud:", dev.date_request);
+        console.log("Fecha procesada:", yearDataUpdata);
+        console.log("Año:", yearDataUpdata.getFullYear());
+        console.log("Mes:", yearDataUpdata.getMonth());
+
+        return yearDataUpdata.getFullYear()===2009 && yearDataUpdata.getMonth()===4;
+    })
+    return dataUpdate
+};
     
 
