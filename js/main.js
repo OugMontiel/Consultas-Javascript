@@ -24,5 +24,8 @@ import {
     getAllRequestStatusRechazadosIn2009,
     getAllRequestStatusEntregadosOnMayoIn2009
 } from "./modulos/requests.js"
+import{
+    getAllOrnamentalesMas100Stock
+} from"./modulos/products.js"
 
-console.log(await getAllPayForm()) 
+console.log(await getAllOrnamentalesMas100Stock()) 
