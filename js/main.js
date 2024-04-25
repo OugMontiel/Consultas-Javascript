@@ -8,7 +8,8 @@ import {
     getRepresentantesVentas 
 } from "./modulos/employee.js";
 import { 
-    getPayIn2008WhitPaypal 
+    getPayIn2008WhitPaypal,
+    getAllPayIn2008WhitPaypal 
 } from "./modulos/payments.js";
 import { 
     getAllClientsMadridCodeIs30And11, 
@@ -23,4 +24,4 @@ import {
     getAllRequestStatusEntregadosOnMayoIn2009
 } from "./modulos/requests.js"
 
-console.log(await getAllRequestStatusEntregadosOnMayoIn2009()) 
+console.log(await getAllPayIn2008WhitPaypal()) 
