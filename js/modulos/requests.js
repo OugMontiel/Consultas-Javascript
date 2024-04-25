@@ -38,6 +38,8 @@ export const getAllCodeRequesCodeClientsDataRequestsDataWait = async () => {
     }
 };
 
+// 10. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
+
 // Función para obtener la lista de pedidos que cumplen con la condición
 export const getDelayedDeliveries = async () => {
     // Hacer la solicitud HTTP para obtener los datos de los pedidos
@@ -72,6 +74,19 @@ export const getDelayedDeliveries = async () => {
 
     // Retornar la lista de pedidos filtrados y formateados
     return formattedOrders;
+};
+
+// 11. Devuelve un listado de todos los pedidos que fueron **rechazados** en `2009`.
+
+export const getAllRequestStatusRechazadosIn2009 = async () => {
+    // Hacer la solicitud HTTP para obtener los datos de los pedidos
+    let res = await fetch("http://localhost:5109/requests?status=Rechazado");
+    let data = await res.json();
+    let dataUpdate = data.filter(dev=>{
+        const yearDataUpdata = new Date(dev.date_request)
+        return yearDataUpdata.getFullYear()===2009
+    })
+    return dataUpdate
 };
 
     

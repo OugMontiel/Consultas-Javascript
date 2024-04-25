@@ -18,7 +18,8 @@ import {
 import {
     getListStatusRequests,
     getAllCodeRequesCodeClientsDataRequestsDataWait,
-    getDelayedDeliveries
+    getDelayedDeliveries,
+    getAllRequestStatusRechazadosIn2009
 } from "./modulos/requests.js"
 
-console.log(await getDelayedDeliveries()) 
+console.log(await getAllRequestStatusRechazadosIn2009()) 
