@@ -1,3 +1,9 @@
+export const getPayments = async()=>{
+    let res =await fetch("http://localhost:5105/payments")
+    let data = await res.json();
+    return data
+}
+
 // 3. Devuelve un listado con todos los pagos que se realizaron en el año `2008` mediante `Paypal`. Ordene el resultado de mayor a menor.
 export const getPayIn2008WhitPaypal=async()=>{
     let res =await fetch("http://localhost:5105/payments?payment=PayPal")

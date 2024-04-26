@@ -1,3 +1,8 @@
+export const getRequest = async()=>{
+    let res =await fetch("http://localhost:5108/requests")
+    let data = await res.json();
+    return data
+}
 // 7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
 export const getListStatusRequests=async()=>{
     let res = await fetch("http://localhost:5108/requests")

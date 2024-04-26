@@ -1,3 +1,9 @@
+export const getClients=async()=>{
+    let res =await fetch("http://localhost:5101/clients")
+    let data = await res.json();
+    return data
+}
+
 // 16. Devuelve un listado con todos los clientes que sean de la ciudad de `Madrid` y cuyo representante de ventas tenga el código de empleado `11` o `30`.
 
 export const getAllClientsMadridCodeIs30And11=async()=>{
