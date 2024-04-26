@@ -16,7 +16,8 @@ import {
     getAllClientsMadridCodeIs30And11, 
     getAllClientsEspanoles,
     getListClientsPayIn2008,
-    getAllClientsAndNameForYoursEmployee
+    getAllClientsAndNameForYoursEmployee,
+    get
 } from "./modulos/clients.js";
 import {
     getListStatusRequests,
@@ -29,4 +30,4 @@ import{
     getAllOrnamentalesMas100Stock
 } from"./modulos/products.js"
 
-console.log(await getAllClientsAndNameForYoursEmployee()) 
+console.log(await get()) 
