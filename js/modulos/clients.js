@@ -28,3 +28,31 @@ export const getListClientsPayIn2008=async()=>{
     let dataUpdate=[...dataUpdateSet]
     return dataUpdate
 }
+
+//2.1 Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
+
+export const getAllClientsAndNameForYoursEmployee=async()=>{
+    let client =await fetch("http://localhost:5101/clients")
+    let employee = await fetch("http://localhost:5103/employee")
+    let dataClients = await client.json();
+    let dataClientsUpdate = dataClients.map(dev=>{
+        return{
+            IDsale:dev.code_employee_sales_manager,
+            nameCliente:dev.client_name,
+            employee:null
+        }
+    })
+    let dataEmployee = await employee.json();
+    let dataEmployeeUpdate = dataEmployee.map(dev=>{
+        return{
+            IDsale:dev.employee_code,
+            nameEmployee:dev.name,
+            lastName: `${dev.lastname1} ${dev.lastname2}`,
+        }
+    });
+    dataClientsUpdate.forEach(dev=>{
+        const employee=dataEmployeeUpdate.find(val=>val.IDsale===dev.IDsale);
+        if(employee){dev.employee=employee}
+    })
+    return dataClientsUpdate
+} 
