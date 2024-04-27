@@ -21,6 +21,8 @@ import {
     getAllClientsEspanoles,
     getListClientsPayIn2008,
     getAllClientsAndNameForYoursEmployee,
+    getAllclientPayAndYourEmpleoyee,
+    get
 } from "./modulos/clients.js";
 import {
     getRequest,

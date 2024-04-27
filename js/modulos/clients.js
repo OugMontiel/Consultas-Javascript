@@ -1,3 +1,6 @@
+import { getEmployee } from "./employee.js";
+import { getPayments } from "./payments.js";
+
 export const getClients=async()=>{
     let res =await fetch("http://localhost:5101/clients")
     let data = await res.json();
@@ -65,7 +68,7 @@ export const getAllClientsAndNameForYoursEmployee=async()=>{
 
 // 2. 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
-export const get=async()=>{
+export const getAllclientPayAndYourEmpleoyee=async()=>{
     let client =await fetch("http://localhost:5101/clients")
     let payments = await fetch("http://localhost:5106/payments")
     let employee = await fetch("http://localhost:5103/employee")
@@ -121,3 +124,42 @@ export const get=async()=>{
       
     return payClientAndEmployee
 } 
+
+// 2. 3. Muestra el nombre de los clientes que **no** hayan realizado pagos junto con el nombre de sus representantes de ventas.
+
+export const get=async()=>{
+    let clients = await getClients();
+    let employee= await getEmployee();
+    let payments= await getPayments();
+    let listNeed=[]
+
+
+    let clientAndEmployee = clients.map(client => {
+        const Employee = employee.find(emp => emp.employee_code === client.code_employee_sales_manager);
+        if (Employee) {
+          return {
+            idClente: client.client_code,
+            IDsale: client.code_employee_sales_manager,
+            fullNameCliente: client.client_name,
+            fullNameEmployee: `${Employee.name} ${Employee.lastname1} ${Employee.lastname2}`, // Asignar el valor de fullNameEmployee
+          };
+        } else {
+          return client; // Devolver el cliente sin cambios si no se encuentra un empleado relacionado
+        }
+      });  
+    const paying = [...new Set(payments.map(pays => pays.code_client))];
+    let payClientAndEmployee = paying.map(pay=>{
+        const client = clientAndEmployee.find(cae=>paying.includes(cae.idClente) === false);
+        console.log(client);
+        if(client){
+            return{
+                idClente:pay.code_client,
+                fullNameCliente:client.fullNameCliente,
+                fullNameEmployee:client.fullNameEmployee,
+                pay:pay.total
+            }
+        }
+    })
+
+    return paying
+}  

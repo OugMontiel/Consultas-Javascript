@@ -12,7 +12,7 @@
         "gama": "json-server js/db/gama.json -p 5103",
         "offices": "json-server js/db/offices.json -p 5104",
         "pago": "json-server js/db/pago.json -p 5105",
-        "payments": "json-server js/db/payments.json -p 5106",
+        "payments": "json-server js/db/payments.json -p 5105",
         "product": "json-server js/db/product.json -p 5107",
         "request_details": "json-server js/db/request_details.json -p 5108",
         "requests": "json-server js/db/requests.json -p 5109",
