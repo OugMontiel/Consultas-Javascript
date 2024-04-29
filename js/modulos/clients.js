@@ -1,5 +1,6 @@
 import { getEmployee } from "./employee.js";
 import { getPayments } from "./payments.js";
+import { getOffices } from "./offices.js";
 
 export const getClients=async()=>{
     let res =await fetch("http://localhost:5101/clients")
@@ -127,7 +128,7 @@ export const getAllclientPayAndYourEmpleoyee=async()=>{
 
 // 2. 3. Muestra el nombre de los clientes que **no** hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
-export const get=async()=>{
+export const getAllclientNotPayAndYourEmpleoyee=async()=>{
     let clients = await getClients();
     let employee= await getEmployee();
     let payments= await getPayments();
@@ -158,3 +159,15 @@ export const get=async()=>{
     }).filter(item=>item!==undefined)
     return listNeed 
 }  
+
+
+// 2. 4. Devuelve el nombre de los clientes que han hecho pagos y el nombre de sus representantes junto con la ciudad de la oficina a la que pertenece el representante.
+
+export const get =async()=>{
+    let clients = await getClients();
+    let employee= await getEmployee();
+    let payments= await getPayments();
+    let offices = await getOffices();
+ 
+    return offices
+}
