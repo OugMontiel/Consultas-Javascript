@@ -133,33 +133,28 @@ export const get=async()=>{
     let payments= await getPayments();
     let listNeed=[]
 
+    let codeClientePay = [...new Set(payments.map(dev=>dev.code_client))]
+    let codeClient= [...new Set(clients.map(dev=>dev.client_code))]
+    
+    let codigosFaltantes = codeClient.filter(codigo => !codeClientePay.includes(codigo));
 
-    let clientAndEmployee = clients.map(client => {
-        const Employee = employee.find(emp => emp.employee_code === client.code_employee_sales_manager);
-        if (Employee) {
-          return {
-            idClente: client.client_code,
-            IDsale: client.code_employee_sales_manager,
-            fullNameCliente: client.client_name,
-            fullNameEmployee: `${Employee.name} ${Employee.lastname1} ${Employee.lastname2}`, // Asignar el valor de fullNameEmployee
-          };
-        } else {
-          return client; // Devolver el cliente sin cambios si no se encuentra un empleado relacionado
-        }
-      });  
-    const paying = [...new Set(payments.map(pays => pays.code_client))];
-    let payClientAndEmployee = paying.map(pay=>{
-        const client = clientAndEmployee.find(cae=>paying.includes(cae.idClente) === false);
-        console.log(client);
-        if(client){
+    listNeed=clients.map(clients=>{
+        let bandera = codigosFaltantes.find(emp =>clients.client_code === emp);
+        if (bandera){
             return{
-                idClente:pay.code_client,
-                fullNameCliente:client.fullNameCliente,
-                fullNameEmployee:client.fullNameEmployee,
-                pay:pay.total
-            }
+                clientCode:clients.client_code,
+                clientsName:clients.client_name,
+                employeeName:null
+            };
         }
-    })
-
-    return paying
+        let existEmployee = employee.find(emp => clients.code_employee_sales_manager === emp.employee_code);
+        if (existEmployee) {
+        return {
+            clientCode: clients.client_code,
+            clientsName: clients.client_name,
+            employeeName: `${existEmployee.name} ${existEmployee.lastname1} ${existEmployee.lastname2}`
+        };
+        }
+    }).filter(item=>item!==undefined)
+    return listNeed 
 }  
