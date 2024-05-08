@@ -1,5 +1,20 @@
 import "./components/clock.js";
 
+let btn = document.querySelectorAll("button")
+let report__menu = document.querySelectorAll(".report__menu button")
+let report__details = document.querySelector(".report__details")
+
+btn.forEach(val=>{
+    val.addEventListener("click",(e)=>{
+        for(let del of report__menu) del.classList.remove("report__active");
+        e.target.classList.add("report__active")
+    })
+})
+
+let [clients]=report__menu
+clients.click();
+
+console.log();
 
 
 // import { getClientsEmploy } from "./module/clients.js";

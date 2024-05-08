@@ -1,5 +1,10 @@
 # Ejercicios de JavaScript [josejuansanchez.org](https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html#jardiner%C3%ADa)
 
+
+para ejecutar 
+
+npm install json-server
+
 ## Consultas sobre una tabla
 
 1. 1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
