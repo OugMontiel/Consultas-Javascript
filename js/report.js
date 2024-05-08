@@ -8,6 +8,37 @@ btn.forEach(val=>{
     val.addEventListener("click",(e)=>{
         for(let del of report__menu) del.classList.remove("report__active");
         e.target.classList.add("report__active")
+
+        if(e.target.innerHTML=="Clients"){
+
+        }
+
+        if(e.target.innerHTML=="employees"){
+            
+        }
+
+        if(e.target.innerHTML=="gama"){
+            
+        }
+
+        if(e.target.innerHTML=="offices"){
+            
+        }
+
+        if(e.target.innerHTML=="payments"){
+            
+        }
+
+        if(e.target.innerHTML=="product"){
+            
+        }
+
+        if(e.target.innerHTML=="request details"){
+            
+        }
+        if(e.target.innerHTML=="requests"){
+            
+        }
     })
 })
 
