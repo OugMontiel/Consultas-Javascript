@@ -1,4 +1,5 @@
 import "./components/clock.js";
+import { Mydetails } from "./components/myDetails.js";
 
 let btn = document.querySelectorAll("button")
 let report__menu = document.querySelectorAll(".report__menu button")
@@ -9,21 +10,25 @@ btn.forEach(val=>{
         for(let del of report__menu) del.classList.remove("report__active");
         e.target.classList.add("report__active")
 
-        if(e.target.innerHTML=="Clients"){
-
-        }
+        if(e.target.innerHTML=="clients"){
+            report__details.innerHTML=/*html*/`
+            <my-details logic="" text=""></my-details>;
+        `
+        };
 
         if(e.target.innerHTML=="employees"){
-            
-        }
+            report__details.innerHTML=/*html*/`
+            <my-details logic="" text=""></my-details>;
+        `
+        };
 
         if(e.target.innerHTML=="gama"){
-            
-        }
+
+        };
 
         if(e.target.innerHTML=="offices"){
-            
-        }
+
+        };
 
         if(e.target.innerHTML=="payments"){
             
@@ -45,7 +50,7 @@ btn.forEach(val=>{
 let [clients]=report__menu
 clients.click();
 
-console.log();
+customElements.define("my-details",Mydetails)
 
 
 // import { getClientsEmploy } from "./module/clients.js";

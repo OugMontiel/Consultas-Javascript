@@ -1,11 +1,8 @@
+@import url(../variables.css);
 details{
     margin-left: var(--layout-box-x);
     margin-right: var(--layout-box-x);
     margin-bottom: var(--layout-box-y);
-}
-.details__description{
-    /* background: red;  */
-    /* width: 80px; */
 }
 .details__container{
     width: 65%;
@@ -31,7 +28,7 @@ summary::after {
     content: '';
     width: 40px;
     height: 40px;
-    background: url('../storage/img/arrow.svg') no-repeat;
+    background: url("../../storage/img/arrow.svg") no-repeat;
     background-size: cover;
     transition: 0.2s;
 }
