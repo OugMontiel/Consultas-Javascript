@@ -1,11 +1,11 @@
 export const getRequest = async()=>{
-    let res =await fetch("http://localhost:5108/requests")
+    let res =await fetch("http://172.16.101.146:5498/requests")
     let data = await res.json();
     return data
 }
 // 7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
 export const getListStatusRequests=async()=>{
-    let res = await fetch("http://localhost:5108/requests")
+    let res = await fetch("http://172.16.101.146:5498/requests")
     let data = await res.json();
     let dataupdateset= new Set(data.map(dev=>dev.status))
     let dataUpdate=[...dataupdateset]
@@ -16,7 +16,7 @@ export const getListStatusRequests=async()=>{
 
 export const getAllCodeRequesCodeClientsDataRequestsDataWait = async () => {
     try {
-        const res = await fetch("http://localhost:5108/requests");
+        const res = await fetch("http://172.16.101.146:5498/requests");
         const data = await res.json();
 
         const delayedOrders = data.filter(order => {
@@ -48,7 +48,7 @@ export const getAllCodeRequesCodeClientsDataRequestsDataWait = async () => {
 // Función para obtener la lista de pedidos que cumplen con la condición
 export const getDelayedDeliveries = async () => {
     // Hacer la solicitud HTTP para obtener los datos de los pedidos
-    let res = await fetch("http://localhost:5108/requests");
+    let res = await fetch("http://172.16.101.146:5498/requests");
     let data = await res.json();
 
     // Filtrar los pedidos que cumplen con la condición
@@ -85,7 +85,7 @@ export const getDelayedDeliveries = async () => {
 
 export const getAllRequestStatusRechazadosIn2009 = async () => {
     // Hacer la solicitud HTTP para obtener los datos de los pedidos
-    let res = await fetch("http://localhost:5108/requests?status=Rechazado");
+    let res = await fetch("http://172.16.101.146:5498/requests?status=Rechazado");
     let data = await res.json();
     let dataUpdate = data.filter(dev=>{
         const yearDataUpdata = new Date(dev.date_request)
@@ -98,7 +98,7 @@ export const getAllRequestStatusRechazadosIn2009 = async () => {
 
 export const getAllRequestStatusEntregadosOnMayoIn2009 = async () => {
     // Hacer la solicitud HTTP para obtener los datos de los pedidos
-    let res = await fetch("http://localhost:5108/requests?status=Entregado");
+    let res = await fetch("http://172.16.101.146:5498/requests?status=Entregado");
     let data = await res.json();
     let dataUpdate = data.filter(dev=>{
         const yearDataUpdata = new Date(dev.date_delivery);

@@ -3,7 +3,7 @@ import { getPayments } from "./payments.js";
 import { getOffices } from "./offices.js";
 
 export const getClients=async()=>{
-    let res =await fetch("http://localhost:5101/clients")
+    let res =await fetch("http://172.16.101.146:5491/clients")
     let data = await res.json();
     return data
 }
@@ -11,7 +11,7 @@ export const getClients=async()=>{
 // 16. Devuelve un listado con todos los clientes que sean de la ciudad de `Madrid` y cuyo representante de ventas tenga el código de empleado `11` o `30`.
 
 export const getAllClientsMadridCodeIs30And11=async()=>{
-    let res =await fetch("http://localhost:5101/clients?city=Madrid")
+    let res =await fetch("http://172.16.101.146:5491/clients?city=Madrid")
     let data = await res.json();
     let dataUpdate=[];
     data.forEach(val => {
@@ -25,14 +25,14 @@ export const getAllClientsMadridCodeIs30And11=async()=>{
 // 6. Devuelve un listado con el nombre de los todos los clientes españoles.
 
 export const getAllClientsEspanoles=async()=>{
-    let res =await fetch("http://localhost:5101/clients?country=Spain")
+    let res =await fetch("http://172.16.101.146:5491/clients?country=Spain")
     let data = await res.json();
     return data
 }
 
 // 8. Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos. Resuelva la consulta:
 export const getListClientsPayIn2008=async()=>{
-    let res =await fetch("http://localhost:5101/clients")
+    let res =await fetch("http://172.16.101.146:5491/clients")
     let data = await res.json();
     let dataUpdateSet=new Set(data.map(dev=>dev.client_code))
     let dataUpdate=[...dataUpdateSet]
@@ -42,8 +42,8 @@ export const getListClientsPayIn2008=async()=>{
 //2.1 Obtén un listado con el nombre de cada cliente y el nombre y apellido de su representante de ventas.
 
 export const getAllClientsAndNameForYoursEmployee=async()=>{
-    let client =await fetch("http://localhost:5101/clients")
-    let employee = await fetch("http://localhost:5103/employee")
+    let client =await fetch("http://172.16.101.146:5491/clients")
+    let employee = await fetch("http://172.16.101.146:5493/employee")
     let dataClients = await client.json();
     let dataClientsUpdate = dataClients.map(dev=>{
         return{
@@ -70,9 +70,9 @@ export const getAllClientsAndNameForYoursEmployee=async()=>{
 // 2. 2. Muestra el nombre de los clientes que hayan realizado pagos junto con el nombre de sus representantes de ventas.
 
 export const getAllclientPayAndYourEmpleoyee=async()=>{
-    let client =await fetch("http://localhost:5101/clients")
-    let payments = await fetch("http://localhost:5106/payments")
-    let employee = await fetch("http://localhost:5103/employee")
+    let client =await fetch("http://172.16.101.146:5491/clients")
+    let payments = await fetch("http://172.16.101.146:5496/payments")
+    let employee = await fetch("http://172.16.101.146:5493/employee")
     let dataPayments = await payments.json();
     let codeClientePay = [...new Set(dataPayments.map(dev=>{
         return{

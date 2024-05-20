@@ -7,15 +7,15 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "node --watch js/main.js",
-        "clients": "json-server js/db/clients.json -p 5101",
-        "employee": "json-server js/db/employee.json -p 5102",
-        "gama": "json-server js/db/gama.json -p 5103",
-        "offices": "json-server js/db/offices.json -p 5104",
-        "pago": "json-server js/db/pago.json -p 5105",
-        "payments": "json-server js/db/payments.json -p 5106",
-        "product": "json-server js/db/product.json -p 5107",
-        "request_details": "json-server js/db/request_details.json -p 5108",
-        "requests": "json-server js/db/requests.json -p 5109",
+        "clients": "json-server -h 172.16.101.146 js/db/clients.json -p 5491",
+        "employee": "json-server -h 172.16.101.146 js/db/employee.json -p 5492",
+        "gama": "json-server -h 172.16.101.146 js/db/gama.json -p 5493",
+        "offices": "json-server -h 172.16.101.146 js/db/offices.json -p 5494",
+        "pago": "json-server -h 172.16.101.146 js/db/pago.json -p 5495",
+        "payments": "json-server -h 172.16.101.146 js/db/payments.json -p 5496",
+        "product": "json-server -h 172.16.101.146 js/db/product.json -p 5497",
+        "request_details": "json-server -h 172.16.101.146 js/db/request_details.json -p 5498",
+        "requests": "json-server -h 172.16.101.146 js/db/requests.json -p 5499",
         "server": "npm run clients & npm run gama & npm run employee & npm run offices & npm run payments & npm run product & npm run request_details & npm run requests"
     },
     "keywords": [],
@@ -23,6 +23,6 @@
     "license": "ISC",
     "dependencies": {
         "async-prompt": "^1.0.1",
-        "json-server": "^1.0.0-alpha.23"
+        "json-server -h 172.16.101.146": "^1.0.0-alph4923"
     }
 }
