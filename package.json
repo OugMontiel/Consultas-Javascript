@@ -13,7 +13,7 @@
         "payments": "json-server -h 172.16.101.146 js/db/payments.json -p 5496",
         "product": "json-server -h 172.16.101.146 js/db/product.json -p 5497",
         "requests": "json-server -h 172.16.101.146 js/db/requests.json -p 5498",
-        "server": "(npm run clients&)& (npm run employee&)& (npm run offices&)& (npm run payments&)& (npm run product&)& (npm run requests&)& (npm run dev&)"
+        "server": "(npm run clients&) & (npm run employee&) & (npm run offices&) & (npm run payments&) & (npm run product&) & (npm run requests&) & (npm run dev&)"
     },
     "keywords": [],
     "author": "",
