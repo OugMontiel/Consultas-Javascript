@@ -37,8 +37,5 @@ import{
     getProducts,
     getAllOrnamentalesMas100Stock
 } from"./modulos/products.js"
-import { 
-    getGama 
-} from "./modulos/gama.js";
 
 console.log(await get()) 
