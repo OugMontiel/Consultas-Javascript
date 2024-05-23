@@ -37,9 +37,6 @@ import{
     getProducts,
     getAllOrnamentalesMas100Stock
 } from"./modulos/products.js"
-import{
-    getRequestDetails
-} from "./modulos/request_details.js"
 import { 
     getGama 
 } from "./modulos/gama.js";
