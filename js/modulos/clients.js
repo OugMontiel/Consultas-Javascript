@@ -43,7 +43,7 @@ export const getListClientsPayIn2008=async()=>{
 
 export const getAllClientsAndNameForYoursEmployee=async()=>{
     let client =await fetch("http://172.16.101.146:5491/clients")
-    let employee = await fetch("http://172.16.101.146:5493/employee")
+    let employee = await fetch("http://172.16.101.146:5492/employee")
     let dataClients = await client.json();
     let dataClientsUpdate = dataClients.map(dev=>{
         return{
@@ -72,7 +72,7 @@ export const getAllClientsAndNameForYoursEmployee=async()=>{
 export const getAllclientPayAndYourEmpleoyee=async()=>{
     let client =await fetch("http://172.16.101.146:5491/clients")
     let payments = await fetch("http://172.16.101.146:5496/payments")
-    let employee = await fetch("http://172.16.101.146:5493/employee")
+    let employee = await fetch("http://172.16.101.146:5492/employee")
     let dataPayments = await payments.json();
     let codeClientePay = [...new Set(dataPayments.map(dev=>{
         return{
